@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import api from '../services/api';
-import { useGlobalState } from '../services/context/GlobalStateProvider';
 
 interface FetchResponse<T> {
   data: T;
@@ -15,7 +14,6 @@ const useFetch = <T,>(url: string): FetchResponse<T> => {
   const [data, setData] = useState<T>({} as T);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const { userState } = useGlobalState();
   const [reload, setReload] = useState(1);
 
   useEffect(() => {
@@ -23,11 +21,7 @@ const useFetch = <T,>(url: string): FetchResponse<T> => {
 
     async function loadData(): Promise<void> {
       try {
-        const response = await api.get(`${url}`, {
-          headers: {
-            Authorization: `Bearer ${userState.idToken}`,
-          },
-        });
+        const response = await api.get(`${url}`);
 
         if (isMounted) {
           const { data } = response;
@@ -43,14 +37,12 @@ const useFetch = <T,>(url: string): FetchResponse<T> => {
       }
     }
 
-    if (userState.idToken) {
-      loadData();
-    }
+    loadData();
 
     return () => {
       isMounted = false;
     };
-  }, [url, userState.idToken, reload]);
+  }, [url, reload]);
 
   return { data, isPending, error, setReload, reload };
 };

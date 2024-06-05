@@ -12,11 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { Control, FieldValues, useForm, UseFormHandleSubmit } from 'react-hook-form';
 import { toast } from 'react-toastify';
-
-import { Input } from '../../../components/forms/input';
-import { PurpleButton } from '../../../components/forms/styles';
 
 interface Task {
   id: number;
@@ -36,13 +32,11 @@ interface Props {
 export const ListTasks = ({
   tasks,
   setTasks,
-  currentTask,
+
   setCurrentTask,
-  open,
+
   setOpen,
 }: Props) => {
-  const { handleSubmit, control, reset } = useForm();
-
   const handleDelete = (id: number) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
@@ -50,7 +44,6 @@ export const ListTasks = ({
   };
 
   const handleEdit = (task: Task) => {
-    console.log(task);
     setCurrentTask(task);
     setOpen(true);
   };
@@ -61,6 +54,14 @@ export const ListTasks = ({
         Tasks
       </Typography>
       <List>
+        {/* if empty return in the center, no task */}
+        {tasks.length === 0 && (
+          <Grid container justifyContent="center">
+            <Typography variant="body1" align="center">
+              No tasks available. Create one now.
+            </Typography>
+          </Grid>
+        )}
         {tasks.map((task) => (
           <React.Fragment key={task.id}>
             <ListItem alignItems="flex-start">

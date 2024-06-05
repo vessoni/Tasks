@@ -5,11 +5,11 @@
 ### Dependencies
 
 - Nodejs - 20.11.1 LTS;
-- ViteJs - ^4.0.0;
-- Styled-Components - ^5.3.10;
+- ViteJs - ^5.2.12;
+- Styled-Components - ^6.1.11;
 - Eslint; [**VSCode plugin Recommended**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - Prettier; [**VSCode plugin Recommended**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- react-router-dom 6.4.3;
+- react-router-dom ^6.4.3;
 
 ### Installing
 
