@@ -32,7 +32,6 @@ export default function ResponsiveDrawer() {
   const location = useLocation();
 
   const handleDrawerToggle = () => {
-    alert('oi');
     setMobileOpen(!mobileOpen);
   };
 
