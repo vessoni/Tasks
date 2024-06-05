@@ -32,6 +32,7 @@ export default function ResponsiveDrawer() {
   const location = useLocation();
 
   const handleDrawerToggle = () => {
+    alert('oi');
     setMobileOpen(!mobileOpen);
   };
 
@@ -87,7 +88,12 @@ export default function ResponsiveDrawer() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' }, color: '#2e2e2e' }}
+            sx={{
+              mr: 2,
+              display: { xs: 'block', sm: 'none' },
+              color: '#2e2e2e',
+              zIndex: '7',
+            }} // Updated display property
           >
             <MenuIcon />
           </IconButton>
@@ -97,7 +103,7 @@ export default function ResponsiveDrawer() {
             sx={{
               marginLeft: {
                 sm: `calc( ${drawerWidth}px)`,
-                xs: `calc( ${drawerWidth}px)`,
+                xs: `calc( ${drawerWidth}px) - 16px`,
               },
               color: '#ffffff',
             }}
@@ -126,6 +132,7 @@ export default function ResponsiveDrawer() {
               width: drawerWidth,
             },
           }}
+          style={{ zIndex: '100' }}
         >
           {drawer}
         </Drawer>
@@ -159,7 +166,10 @@ export default function ResponsiveDrawer() {
             xs: `calc(100% - ${drawerWidth}px)`,
           },
           overflow: 'auto',
-          marginTop: '0.5rem',
+          marginTop: {
+            sm: '1rem',
+            xs: '3rem',
+          },
           marginBottom: '20px',
           zIndex: '1',
         }}

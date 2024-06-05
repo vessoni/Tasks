@@ -10,6 +10,11 @@ export const PurpleTextField = styled(TextField)`
       border-color: #6058ff;
     }
   }
+  &:disabled {
+    background-color: #ccc;
+    color: #fff;
+    box-shadow: none;
+  }
 `;
 
 export const PurpleButton = styled.button`

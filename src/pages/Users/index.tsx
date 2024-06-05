@@ -2,6 +2,7 @@ import MaterialTable from '@material-table/core';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import Loading from '../../components/Loading';
 import useFetch from '../../hooks/useFetch';
 
 interface User {
@@ -21,12 +22,11 @@ export const Users = () => {
   const navigate = useNavigate();
 
   if (isPending || !data) {
-    console.log('loading');
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleRedirect = (user: User | undefined) => {
-    navigate(`/users/${user?.id}`);
+    navigate(`/user/${user?.id}`);
   };
 
   return (
