@@ -50,6 +50,7 @@ export default function ResponsiveDrawer() {
               paddingLeft: '16px',
               backgroundColor: location.pathname === item.to ? '#e0e0e0' : 'inherit',
             }}
+            onClick={handleDrawerToggle}
           >
             <ListItemIcon sx={{ minWidth: 'auto', marginRight: '8px' }}>
               {item.icon}
