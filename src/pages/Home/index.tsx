@@ -11,6 +11,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+import { PurpleButton } from '../../components/forms/styles';
 
 export const Home = () => {
   return (
@@ -31,9 +34,9 @@ export const Home = () => {
 
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <Typography variant="h6" gutterBottom>
-                Tasks Page
-              </Typography>
+              <Link to="/tasks">
+                <PurpleButton>Tasks Page</PurpleButton>
+              </Link>
               <List>
                 <ListItem>
                   <ListItemText
@@ -68,9 +71,10 @@ export const Home = () => {
               </List>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="h5" component="h3" gutterBottom>
-                Users Page
-              </Typography>
+              <Link to="/users">
+                <PurpleButton> Users Page</PurpleButton>
+              </Link>
+
               <List>
                 <ListItem>
                   <ListItemText primary="User List: Access a list of all users by navigating to the /users endpoint." />
